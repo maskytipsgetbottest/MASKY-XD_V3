@@ -1,6 +1,6 @@
 // Bot Loader (obfuscated style)
 // Masky Edition 🤖
-
+import express from "express";
 import fs from "fs";
 import path from "path";
 import axios from "axios";
@@ -140,4 +140,14 @@ function startBot() {
     console.error(chalk.red("❌ Fatal error in main execution:"), err);
     process.exit(1);
   }
+  // --- Web Server to keep Render alive ---
+const app = express();
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "masky.html"));
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`🌐 Web server running on http://localhost:${PORT}`);
+});
 })();
