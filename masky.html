@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MASKY-XD-V3</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: url("https://files.catbox.moe/z9tm8u.jpg") no-repeat center center fixed;
+      background-size: cover;
+      color: ;
+      text-align: center;
+      font-family: "Poppins", sans-serif;
+    }
+
+    .glow {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 0 0 5px #00f, 0 0 10px #0ff, 0 0 20px #0ff, 0 0 40px #00f;
+      animation: glowAnim 2s infinite alternate;
+    }
+
+    @keyframes glowAnim {
+      from {
+        text-shadow: 0 0 5px #00f, 0 0 10px #0ff, 0 0 20px #0ff;
+      }
+      to {
+        text-shadow: 0 0 20px #0ff, 0 0 40px #00f, 0 0 60px #0ff;
+      }
+    }
+
+    .status-box {
+      margin-top: 20px;
+      padding: 20px;
+      border-radius: 15px;
+      background: rgba(0, 0, 0, 0.6);
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 1rem;
+      color: #ddd;
+    }
+  </style>
+  <style>
+  .glow-footer {
+    font-size: 1.1rem;
+    font-weight: bold;
+    animation: rainbowGlow 3s infinite alternate;
+  }
+
+  @keyframes rainbowGlow {
+    0%   { color: #00f; text-shadow: 0 0 10px #00f, 0 0 20px #00f; }
+    20%  { color: #f00; text-shadow: 0 0 10px #f00, 0 0 20px #f00; }
+    40%  { color: #0f0; text-shadow: 0 0 10px #0f0, 0 0 20px #0f0; }
+    60%  { color: #ff0; text-shadow: 0 0 10px #ff0, 0 0 20px #ff0; }
+    80%  { color: #a0f; text-shadow: 0 0 10px #a0f, 0 0 20px #a0f; }
+    100% { color: #0ff; text-shadow: 0 0 10px #0ff, 0 0 20px #0ff; }
+  }
+</style>
+</head>
+<body><div class="container d-flex flex-column justify-content-center align-items-center vh-100">
+  <!-- Glowing Title -->
+  <h1 class="glow">MASKY-XD-V3</h1>
+
+  <!-- Glowing US Alive -->
+  <h4 class="glow mt-2">IS Alive ✅</h4>
+
+  <!-- Battery (top-right corner) -->
+  <div id="battery-box" 
+       style="position: fixed; top: 15px; right: 15px; 
+              background: rgba(0,0,0,0.6); 
+              border-radius: 8px; 
+              padding: 6px 12px; 
+              color: #fff; 
+              font-weight: bold; 
+              font-size: 0.9rem; 
+              display: flex; 
+              align-items: center; 
+              box-shadow: 0 0 10px rgba(0,255,255,0.5);">
+
+    <!-- Battery outline -->
+    <div style="width: 40px; height: 18px; border: 2px solid #0ff; border-radius: 4px; position: relative;">
+      <!-- Battery head -->
+      <div style="position: absolute; right: -6px; top: 3px; width: 4px; height: 8px; background: #0ff; border-radius: 1px;"></div>
+      <!-- Battery level -->
+      <div id="battery-fill" style="height: 100%; width: 50%; background: linear-gradient(90deg,#0ff,#00f); border-radius: 2px 0 0 2px;"></div>
+      <!-- Battery text -->
+      <div id="battery-text" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: bold; color: #000;">50%</div>
+    </div>
+  </div>
+<footer class="mt-5">
+  <span class="glow-footer">POWERED BY 𝗠𝗮𝘀𝗸𝘆 𝗢𝗳𝗳𝗶𝗰𝗶𝗮𝗹 𝗧𝗲𝗰𝗵</span>
+</footer>
+</div>
+
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  if (navigator.getBattery) {
+    navigator.getBattery().then(function(battery) {
+      function updateBattery() {
+        const level = Math.round(battery.level * 100);
+        const fill = document.getElementById("battery-fill");
+        const text = document.getElementById("battery-text");
+        
+        fill.style.width = level + "%";
+        text.innerText = level + "%";
+
+        // color change based on level
+        if (level > 50) {
+          fill.style.background = "linear-gradient(90deg,#0ff,#00f)";
+          text.style.color = "#000";
+        } else if (level > 20) {
+          fill.style.background = "linear-gradient(90deg,#ff0,#f80)";
+          text.style.color = "#000";
+        } else {
+          fill.style.background = "linear-gradient(90deg,#f00,#900)";
+          text.style.color = "#fff";
+        }
+      }
+      updateBattery();
+      battery.addEventListener("levelchange", updateBattery);
+    });
+  } else {
+    document.getElementById("battery-text").innerText = "N/A";
+  }
+
+ 
+
+    // Fake session check
+    function checkSession() {
+      const statusEl = document.getElementById("session-status");
+      const alive = true; // change logic if you want real check
+      if (alive) {
+        statusEl.innerHTML = "Alive ✅";
+        statusEl.classList.remove("text-danger");
+        statusEl.classList.add("text-success");
+      } else {
+        statusEl.innerHTML = "Dead ❌";
+        statusEl.classList.remove("text-success");
+        statusEl.classList.add("text-danger");
+      }
+    }
+    checkSession();
+  </script>
+</body>
+</html>
