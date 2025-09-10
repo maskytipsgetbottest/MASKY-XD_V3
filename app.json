@@ -1,0 +1,55 @@
+{
+  "name": "MaskyXD-Bot",
+  "description": "A WhatsApp bot for managing group commands and automating tasks.",
+  "repository": "https://github.com/MaskyOfficialTech/MASKY-XD_V3",
+  "logo": "https://files.catbox.moe/i5gti2.png",
+  "keywords": ["nodejs", "whatsapp", "bot", "automation", masky-xd"],
+  "success_url": "/",
+  "stack": "heroku-24",
+  "env": {
+    "SESSION_ID": {
+      "description": "Session ID for the bot, must start with 'masky~'.",
+      "required": true,
+      "value": ""
+    },
+    "OWNER_NUMBER": {
+      "description": "Phone number of the bot owner (e.g., 2348074548225).",
+      "required": false,
+      "value": "2348074548225"
+    },
+    "GIPHY_API_KEY": {
+      "description": "API key for Giphy integration.",
+      "required": false,
+      "value": "qnl7ssQChTdPjsKta2Ax2LMaGXz303tq"
+    },
+    "AUTO_STATUS_SEEN": {
+      "description": "Enable automatic viewing of WhatsApp statuses (true/false).",
+      "required": false,
+      "value": "true"
+    },
+    "AUTO_STATUS_REACT": {
+      "description": "Enable automatic reactions to WhatsApp statuses with random emojis (true/false).",
+      "required": false,
+      "value": "true"
+    },
+    "COMMAND_MODE": {
+      "description": "Bot command mode (public or private).",
+      "required": false,
+      "value": "public"
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-nodejs.git"
+    }
+  ],
+  "scripts": {
+    "start": "node index.js"
+  },
+  "addons": []
+}
